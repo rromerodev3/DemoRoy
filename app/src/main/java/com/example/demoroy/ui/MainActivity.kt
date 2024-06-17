@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         setupUiBehavior()
         subscribeToEvents()
+        // new feature
     }
 
     private fun setupUiBehavior() {
