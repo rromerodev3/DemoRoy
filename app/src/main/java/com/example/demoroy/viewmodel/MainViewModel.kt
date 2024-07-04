@@ -1,6 +1,9 @@
 package com.example.demoroy.viewmodel
 
 import android.util.Log
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,8 +23,10 @@ class MainViewModel @Inject constructor(
 
     private val _isLoading = MutableLiveData<Boolean>()
     private val _users = MutableLiveData<List<User>>()
+    private val _composeUsers = listOf<User>().toMutableStateList()
     val isLoading: LiveData<Boolean> get() = _isLoading
     val users: LiveData<List<User>> get() = _users
+    val composeUsers: List<User> get() = _composeUsers
 
     fun getUsers() {
         viewModelScope.launch {
@@ -29,6 +34,7 @@ class MainViewModel @Inject constructor(
             val users = userRepository.getRemoteUsers()
             delay(TimeUnit.SECONDS.toMillis(6))
             _users.postValue(users)
+            _composeUsers.addAll(users)
             _isLoading.postValue(false)
         }
     }

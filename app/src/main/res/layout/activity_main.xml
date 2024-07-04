@@ -30,23 +30,30 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rclVwUsers"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="400dp"
             android:layout_marginTop="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:listitem="@layout/user_item"
+            app:layout_constraintTop_toBottomOf="@+id/btnGetUsers"
             tools:itemCount="4"
-            app:layout_constraintTop_toBottomOf="@+id/btnGetUsers">
+            android:scrollbars="vertical"
+            tools:listitem="@layout/user_item" />
 
-        </androidx.recyclerview.widget.RecyclerView>
+        <androidx.compose.ui.platform.ComposeView
+            android:id="@+id/compose_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rclVwUsers" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cnstLytProgress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            tools:visibility="gone"
-            android:visibility="@{loading? View.VISIBLE : View.GONE}">
+            android:visibility="@{loading? View.VISIBLE : View.GONE}"
+            tools:visibility="gone">
 
             <ProgressBar
                 android:layout_width="75dp"
