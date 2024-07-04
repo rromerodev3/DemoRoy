@@ -113,6 +113,7 @@ fun ListElement(user: User) {
 @Preview(showBackground = true)
 @Composable
 private fun PreviewDemoRoy() {
+    // test data
     val users = listOf(
         User(1, "Roy", "Romers", "roy@roy.com.mx"),
         User(2, "Ray", "Romers", "ray@roy.com.mx"),
